@@ -6,7 +6,7 @@ function Form(props) {
         <form className="search">
             <div className="form-group">
                 <input 
-                // assignes value of props.search
+                // assigns value of props.search
                 value={props.search} 
                 // function to handle change in input field
                 onChange={props.handleInputChange}
@@ -15,17 +15,17 @@ function Form(props) {
                 type="text"
                 className="form-control"
                 // displays message until user starts typing
-                placeholder="Search for an employee by name"
+                placeholder="Search for employees by home state"
                 id="searchName"
                 />
                 {/* Submit button, not functioning correctly, adjusted to reset list */}
             <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
                 Reset Employee List
             </button>
-
             </div>
         </form>
     )
 }
 
+// exports Form function object
 export default Form;
