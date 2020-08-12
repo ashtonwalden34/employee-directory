@@ -20,16 +20,20 @@ function EmployeeTable() {
       });      
   }, [])
 
+  // function to search for an employee's home state
   let searchFunction = (e) => {
+    // searches by the user input as it is typed
     const filterResult = employees.filter(employee => employee.location.state.substring(0, e.target.value.length).toLowerCase() === e.target.value.toLowerCase());
-    console.log('filter stuff', filterResult)
-    //setEmployees(filterResult)
+    // console.log('filter stuff', filterResult)
+    // setEmployees(filterResult)
     setFilteredEmps({...filteredEmps, emps: filterResult})
   
   }
 
+  // function to sort fist names in ascending and descending order
   let handleSort = () => {
-    console.log('we got clicked!')
+    // console.log('we got clicked!')
+    // sorts names in ascending order
     function compareAsc( a, b ) {
       if ( a.name.first < b.name.first ){
         return -1;
@@ -39,7 +43,7 @@ function EmployeeTable() {
       }
       return 0;
     }
-
+    // sorts names in descending order
     function compareDsc( a, b ) {
       if ( a.name.first > b.name.first ){
         return -1;
@@ -50,11 +54,13 @@ function EmployeeTable() {
       return 0;
     }
 
-
+    // if statement to display the correct sorted list of employees
+    // if ascending then show ascending
     if (filteredEmps.showAsc) {
       var newEmpOrder = employees.sort(compareAsc)
      
       var newFilteredOrder = filteredEmps.emps.sort(compareAsc)
+      // if descending show descending 
     } else {
       var newEmpOrder = employees.sort(compareDsc)
      
@@ -62,18 +68,20 @@ function EmployeeTable() {
     }
 
    
-
+    // set employees to new order
     setEmployees(newEmpOrder)
     setFilteredEmps({...filteredEmps, emps: newFilteredOrder, showAsc: !filteredEmps.showAsc})
-    console.log('new orderrs', newEmpOrder, newFilteredOrder)
+    // console.log('new orderrs', newEmpOrder, newFilteredOrder)
   
 
   }
 
-  console.log('this is our state', employees)
-  console.log('Filtered emps!!', filteredEmps)
-  var empsToDisplay = employees
+  // console.log('this is our state', employees)
+  // console.log('Filtered emps!!', filteredEmps)
 
+  // variable to hold demployees being displayed and setting it equal to employees
+  var empsToDisplay = employees
+// if there are things in the filtered employees then display them
   if (filteredEmps.emps.length > 0) {
     empsToDisplay =filteredEmps.emps
   }
@@ -87,6 +95,7 @@ function EmployeeTable() {
                 <thead className="thead-dark">
                     <tr>
                       <th>Photo</th>
+                      {/* When the first name column title is clicked it will sort by ascending or descending order */}
                       <th onClick={handleSort}>First Name</th>
                       <th>Last Name</th>
                       <th>City</th>

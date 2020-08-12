@@ -18,8 +18,9 @@ function Form(props) {
                 placeholder="Search for an employee by name"
                 id="searchName"
                 />
+                {/* Submit button, not functioning correctly, adjusted to reset list */}
             <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
-                Search
+                Reset Employee List
             </button>
 
             </div>
